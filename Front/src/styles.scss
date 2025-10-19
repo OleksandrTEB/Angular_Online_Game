@@ -1,0 +1,17 @@
+@use "styles/fonts/font" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Custom';
+  outline: none;
+  border: none;
+  color: white;
+  user-select: none;
+}
+
+body {
+  background: #ff0000;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 1) 14%, rgba(0, 0, 0, 1) 75%);
+}

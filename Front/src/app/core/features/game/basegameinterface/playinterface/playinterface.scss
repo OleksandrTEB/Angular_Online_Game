@@ -1,0 +1,64 @@
+@use "global" as *;
+
+.base-interface {
+  padding: 1rem;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+
+    .information {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+
+      .display_username {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3rem 0;
+      gap: 1rem;
+
+      .btn {
+        @include base-button(200px, #3b7822);
+
+        &:hover {
+          background: #3b7822;
+        }
+
+        &:active {
+          background: #3b7822;
+        }
+      }
+    }
+
+    .form_to_code {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      input {
+        background: #0e316e;
+        width: 200px;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 4px;
+      }
+      .code-button {
+        background: #3b7822;
+        padding: 5px 12px;
+        border-radius: 4px;
+        width: 200px;
+        text-align: center;
+      }
+    }
+  }
+}

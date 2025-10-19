@@ -1,0 +1,20 @@
+<section class="base-interface">
+  <div class="container">
+    <div class="information">
+      <div class="display_username">
+        <div class="your-name">Your name: {{ username }}</div>
+        <div class="user-name"></div>
+      </div>
+    </div>
+    <div class="buttons">
+      <div class="btn play-button" (click)="goToFight()">Random opponents</div>
+      <div class="btn room-battle">Create custom battle</div>
+      <div class="btn room-battle-join">Join to custom battle</div>
+    </div>
+
+    <div class="form_to_code">
+      <input type="text" placeholder="Enter code" id="code_input">
+      <button class="code-button">Submit code</button>
+    </div>
+  </div>
+</section>

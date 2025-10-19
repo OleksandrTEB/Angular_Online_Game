@@ -1,0 +1,5 @@
+.idea
+Back/vendor
+Front/node_modules
+Front/.angular
+Front/dist

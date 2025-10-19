@@ -1,0 +1,39 @@
+<section class="game-interface">
+  <div class="back-btn" (click)="goToMenu()">Back to menu</div>
+  <div class="players-info">
+    <div>Players:</div>
+    <div class="players">
+      @for (player of players; track player) {
+        <div>{{ player.username }}: {{ player.char }}</div>
+      }
+    </div>
+  </div>
+  <div class="game-board">
+    <div class="current-player">Current player is {{ currentChar }}</div>
+    <div class="content">
+      @for (index of sections; track index.id) {
+        <div class="section" (click)="clickTo(index.id)">
+          @if (index.clicked) {
+            <img [src]="index.img" alt="IMG">
+          }
+        </div>
+      }
+    </div>
+    <div class="button-reset" (click)="resetBtn()">Reset</div>
+    @if (winner) {
+      <div class="win">{{ player_winner }}: Victory</div>
+    }
+  </div>
+  @if (!canStart) {
+    <div class="container-preloader">
+      <div class="content">
+        <div class="preloader"></div>
+        <div class="text">
+          Searching opponent for you...
+        </div>
+      </div>
+    </div>
+  }
+  <div class="status offline" [class.online]="conn">{{ status }}</div>
+  <div class="custom_battle_code"></div>
+</section>

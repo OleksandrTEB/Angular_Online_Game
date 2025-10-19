@@ -1,0 +1,13 @@
+@use 'global' as *;
+
+main {
+  .container {
+    .header {
+      @include flex-row;
+
+      .new_account {
+        @include base-button(190px);
+      }
+    }
+  }
+}

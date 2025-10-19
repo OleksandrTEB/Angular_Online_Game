@@ -1,0 +1,43 @@
+.start-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 5rem auto;
+  gap: 1rem;
+  height: auto;
+  background: rgba(255, 255, 255, 0.25);
+  max-width: 400px;
+  @media (max-width: 500px) {
+    max-width: calc(100% - 2rem);
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    input {
+      background: #9a2f2f;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    .button {
+      background: #2a9157;
+      padding: 5px 12px;
+      border-radius: 4px;
+
+      &:hover {
+        background: #47b57d;
+        cursor: pointer;
+      }
+
+      &:active {
+        background: #46986e;
+      }
+    }
+  }
+}
