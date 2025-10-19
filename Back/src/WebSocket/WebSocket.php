@@ -98,6 +98,10 @@ class WebSocket implements MessageComponentInterface
             case 'custom_battle':
                 $custom_room = random_int(1000, 9999);
 
+                unset($this->rooms[$this->open_room]);
+
+                $this->checkIssetArray($room);
+
                 $this->rooms[$this->open_room]['code'] = $custom_room;
 
                 $from->send(json_encode([
@@ -107,7 +111,6 @@ class WebSocket implements MessageComponentInterface
 
                 break;
             case 'code':
-                unset($this->rooms[$this->open_room]['players'][$id]);
 
                 $code = $data['code'];
 
@@ -121,7 +124,9 @@ class WebSocket implements MessageComponentInterface
             case 'userinfo':
                 $username = $data['username'];
 
-                $char = count($this->rooms[$room]['players']) === 1 ? 'x' : 'o';
+                $player = (empty($this->rooms[$room]['code'])) ? 1 : 0;
+
+                $char = count($this->rooms[$room]['players']) === $player ? 'x' : 'o';
                 $canStep = $char === 'x';
 
                 $playerData = [
@@ -133,7 +138,15 @@ class WebSocket implements MessageComponentInterface
                 $this->rooms[$this->open_room]['players'][$id] = $playerData;
 
 
-                if (count($this->rooms[$room]['players']) === 2) {
+                $canSend = false;
+                $keys = array_keys($this->rooms[$room]['players']);
+                for ($i = 0; $i < count($keys); $i++) {
+                    if (!empty($this->rooms[$room]['players'][$keys[$i]])) {
+                        $canSend = true;
+                    }
+                }
+
+                if (count($this->rooms[$room]['players']) === 2 && $canSend) {
                     foreach ($this->clients as $client) {
                         if (array_key_exists($client->resourceId, $this->rooms[$room]['players'])) {
                             $client->send(json_encode([

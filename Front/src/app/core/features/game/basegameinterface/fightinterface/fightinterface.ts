@@ -19,6 +19,8 @@ export class Fightinterface implements OnInit {
   conn: boolean = false;
   winner: boolean = false;
   player_winner: string = '';
+  custom_battle: boolean = false;
+  code: number = 0;
 
   tryReconnect: boolean = false;
 
@@ -72,7 +74,19 @@ export class Fightinterface implements OnInit {
           }
         }
 
+        this.conn = true;
+        this.status = 'Online';
+
+        this.custom_battle = false;
         this.canStart = data.canStart;
+      }
+
+      if (data.type === 'custom_battle') {
+        this.custom_battle = true;
+        this.code = data.code;
+
+        this.conn = true;
+        this.status = 'Online';
       }
 
       if (data.type === 'canStep') {
@@ -189,5 +203,7 @@ export class Fightinterface implements OnInit {
 
   async goToMenu() {
     await this.router.navigateByUrl('game')
+
+    this.WebSocketService.ws.close()
   }
 }

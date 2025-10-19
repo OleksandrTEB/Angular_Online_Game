@@ -35,5 +35,7 @@
     </div>
   }
   <div class="status offline" [class.online]="conn">{{ status }}</div>
-  <div class="custom_battle_code"></div>
+  @if (custom_battle) {
+    <div class="custom_battle_code">Your custom battle code: {{ code }}</div>
+  }
 </section>

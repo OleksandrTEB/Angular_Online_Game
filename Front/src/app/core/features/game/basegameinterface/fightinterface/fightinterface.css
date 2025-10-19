@@ -142,7 +142,6 @@
   background: #19c81c;
 }
 .game-interface .custom_battle_code {
-  display: none;
   position: absolute;
   left: 50%;
   top: 2rem;
